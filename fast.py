@@ -1,15 +1,16 @@
 from fastapi import FastAPI
 import psycopg2
 from psycopg2.extras import RealDictCursor
+import os
 
 app = FastAPI()
 
-# Database connection details
-DB_HOST = "aws-1-ap-south-1.pooler.supabase.com"
-DB_PORT = 6543
-DB_NAME = "postgres"
-DB_USER = "postgres.vegkphzwxjmazpzkofex"
-DB_PASSWORD = "Swamygowda32"
+# Read from environment variables
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
 
 def get_db_connection():
     conn = psycopg2.connect(
@@ -18,7 +19,7 @@ def get_db_connection():
         database=DB_NAME,
         user=DB_USER,
         password=DB_PASSWORD,
-        cursor_factory=RealDictCursor  # returns dict instead of tuple
+        cursor_factory=RealDictCursor
     )
     return conn
 
@@ -31,3 +32,7 @@ def get_products():
     cursor.close()
     conn.close()
     return {"products": rows}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("fast:app", host="0.0.0.0", port=int(os.getenv("PORT", 8000)), reload=True)
