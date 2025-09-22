@@ -127,7 +127,7 @@ numba==0.60.0
 numpy==2.0.1
 opencv-python==4.10.0.84
 opencv-python-headless==4.10.0.84
-opendaq @ file:///C:/Users/SMPM2/Downloads/opendaq-3.21.0dev%2Bc189a55-cp312-cp312-win_amd64.whl#sha256=9584e930676a7e03d663d509271c2f8ce073e6f21e1f0d75a48b4119b0088c14
+# opendaq @ file:///C:/Users/SMPM2/Downloads/opendaq-3.21.0dev%2Bc189a55-cp312-cp312-win_amd64.whl#sha256=9584e930676a7e03d663d509271c2f8ce073e6f21e1f0d75a48b4119b0088c14
 openpyxl==3.1.5
 orjson==3.10.6
 packaging==24.0
